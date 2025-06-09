@@ -1,11 +1,6 @@
-class Solver2015():
-    def __init__(self, input_data:str, args*, kwargs**):
-        self.input = input_data
+class Solver():
+    def __init__(self, *args, **kwargs):
         self.first_sol, self.second_sol = None, None
-        
-        
-        
-        
         
     def d1_p1(self)->None:
         self.first_sol = 0
