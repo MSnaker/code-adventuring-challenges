@@ -1,0 +1,22 @@
+{
+    "p1": [
+        {
+            "input": "2x3x4",
+            "result": 58
+        },
+        {
+            "input": "1x1x10",
+            "result": 43
+        }
+    ],
+    "p2": [
+        {
+            "input": "2x3x4",
+            "result": 34
+        },
+        {
+            "input": "1x1x10",
+            "result": 14
+        }
+    ]
+}

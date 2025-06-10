@@ -1,0 +1,50 @@
+{
+    "p1": [
+        {
+            "input": "(())",
+            "result": 0
+        },
+        {
+            "input": "()()",
+            "result": 0
+        },
+        {
+            "input": "(((",
+            "result": 3
+        },
+        {
+            "input": "(()(()(",
+            "result": 3
+        },
+        {
+            "input": "))(((((",
+            "result": 3
+        },
+        {
+            "input": "())",
+            "result": -1
+        },
+        {
+            "input": "))(",
+            "result": -1
+        },
+        {
+            "input": ")))",
+            "result": -3
+        },
+        {
+            "input": ")())())",
+            "result": -3
+        }
+    ],
+    "p2": [
+        {
+            "input": ")",
+            "result": 1
+        },
+        {
+            "input": "()())",
+            "result": 5
+        }
+    ]
+}
