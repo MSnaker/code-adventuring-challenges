@@ -24,7 +24,7 @@ args = parser.parse_args()
 try:
     match int(args.year):
         case 2015:
-            from src.solver.solver2015 import Solver as ThisYearSolver
+            from solver.solver2015 import Solver as ThisYearSolver
         # case '2016':
         #     import solvers.s2016
         # case '2017':
@@ -55,6 +55,10 @@ class Solver(ThisYearSolver):
     def set_input(self, input_file: str) -> None:
         with open(input_file, 'r', encoding='UTF-8') as file:
             self.input = file.read()
+            
+    def get_solver_functions(self) -> None:
+        self.solvefirst = getattr(self, f"d{self.day}_p1")
+        self.solvesecond = getattr(self, f"d{self.day}_p2")
         
 def main():
     print("Hello Hello Hello!")
@@ -64,6 +68,7 @@ def main():
     filepath = os.path.join(os.getcwd(), "input", args.year, args.day, "input")
     if not os.path.isfile(filepath): raise FileNotFoundError
     solverinho.set_input(filepath)
+    solverinho.get_solver_functions()
     
     try:
         solverinho.solvefirst()
