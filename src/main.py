@@ -9,6 +9,7 @@ The purpose of this code is to solve Advent of code problems.
 
 import argparse
 import os
+import json
         
 parser = argparse.ArgumentParser(description=__doc__, 
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -18,6 +19,10 @@ parser.add_argument("--year", "-y",
 parser.add_argument("--day", "-d",
                     dest="day",
                     help="Day to solve for.")
+parser.add_argument("--debug", 
+                    dest="debug",
+                    help="Argument to enable debug mode.",
+                    action="store_true")
 args = parser.parse_args()
 
 
@@ -63,13 +68,35 @@ class Solver(ThisYearSolver):
 def main():
     print("Hello Hello Hello!")
     print(f'Solving Advent of Code for year {args.year}!')
+    print(f'The day is {args.day}!')
     
     solverinho = Solver(year=int(args.year), day=int(args.day))
-    filepath = os.path.join(os.getcwd(), "input", args.year, args.day, "input")
-    if not os.path.isfile(filepath): raise FileNotFoundError
-    solverinho.set_input(filepath)
+    if args.debug:
+        filepath = os.path.join(os.getcwd(), "input", args.year, args.day, "tests.json")
+        with open(filepath, 'r') as jsontests:
+            tests = json.load(jsontests)
+    else:
+        filepath = os.path.join(os.getcwd(), "input", args.year, args.day, "input")
+        if not os.path.isfile(filepath): raise FileNotFoundError
+        solverinho.set_input(filepath)
+
     solverinho.get_solver_functions()
-    
+
+    if args.debug:
+        for problem, test_cases in tests.items():
+            for test_case in test_cases:
+                solverinho.input = test_case["input"]
+                print(f"Testing with input {solverinho.input}")
+                print(f"Expected result: {test_case['result']}")
+                match problem:
+                    case "p1":
+                        solverinho.solvefirst()
+                        print(f"First problem solves as {solverinho.first_sol}")
+                    case "p2":
+                        solverinho.solvesecond()
+                        print(f"Second problem solves as {solverinho.second_sol}")
+        return
+
     try:
         solverinho.solvefirst()
     except NotImplementedError:

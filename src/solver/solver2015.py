@@ -14,7 +14,6 @@ class Solver():
                 downcount += 1
             else: raise TypeError(f'Unexpected character found in input file: {char}. Position: {pos}.')
             
-        print(f'Found: {upcount} ), {downcount} (')
             
     def d1_p2(self)->None:
         current_pos = 0
