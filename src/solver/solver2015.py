@@ -45,3 +45,9 @@ class Solver():
             ribbon_length += 2*sum(sides)
             self.second_sol += ribbon_length
         
+    def d1_p1(self) -> None:
+        raise NotImplementedError
+    
+    def d1_p2(self) -> None:
+        raise NotImplementedError
+    
